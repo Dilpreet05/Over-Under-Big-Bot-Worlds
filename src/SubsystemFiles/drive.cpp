@@ -4,13 +4,13 @@ bool isArcade = false;
 bool isFlipped = false;
 bool loop = false;
 
-ez::Drive chassis ({-20,-19,-18,-17}, {14,13,12,11}, 15 ,3.5,600,1.666);
+ez::Drive chassis ({-3,-1,12,-11}, {8,9,16,-19}, 15 ,3.5,600,1.666);
 
 void updateDrive(){
 
         if(master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)){
                 chassis.drive_imu_reset();
-                matchCycleFar();
+                // matchCycleFar();
         }
 
         if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)){
