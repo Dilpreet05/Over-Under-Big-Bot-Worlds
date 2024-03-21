@@ -1,6 +1,6 @@
 #include "main.h"
 
-pros::Motor flywheel1(10,MOTOR_GEARSET_06,false);
+pros::Motor flywheel1(8,MOTOR_GEARSET_06,false);
 pros::Motor flywheel2(1,MOTOR_GEARSET_06,true);
 
 void setFlywheelBrake(){

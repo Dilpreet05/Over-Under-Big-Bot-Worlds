@@ -4,7 +4,7 @@ bool isArcade = false;
 bool isFlipped = false;
 bool loop = false;
 
-ez::Drive chassis ({-3,-1,12,-11}, {8,9,16,-19}, 15 ,3.5,600,1.666);
+ez::Drive chassis ({-3,12,-11}, {9,16,-19}, 15 ,3.5,600,1.666);
 
 void updateDrive(){
 
