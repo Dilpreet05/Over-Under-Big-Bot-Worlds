@@ -4,25 +4,20 @@ bool isArcade = false;
 bool isFlipped = false;
 bool loop = false;
 
-ez::Drive chassis ({-3,12,-11}, {9,16,-19}, 15 ,3.5,600,1.666);
+ez::Drive chassis ( {-2,-1,-3,4}, {10,9,8,-7}, 6 ,3.25,600,1.666);
 
 void updateDrive(){
 
-        if(master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)){
+        if(master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)){
                 chassis.drive_imu_reset();
-                // matchCycleFar();
+                chassis.opcontrol_drive_reverse_set(!chassis.opcontrol_drive_reverse_get());
         }
 
         if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)){
-                isArcade = !isArcade;
+                // macro
         }
 
-
-        if(!isArcade){
-                chassis.opcontrol_tank();
-        }   else{
-                chassis.opcontrol_arcade_standard(ez::SPLIT);
-        }
+        chassis.opcontrol_tank();
         
 
         pros::delay(50);

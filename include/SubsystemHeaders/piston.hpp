@@ -2,17 +2,17 @@
 
 
 
-extern bool isWingPistonLeft;
-extern bool isWingPistonRight;
+// extern bool isRatchetPistonLeft;
+// extern bool isRatchetPistonRight;
 
-extern bool isHangExtended;
+// extern bool isGrabberElasticExtended;
 
-extern bool isGrabberExtended;
+// extern bool isGrabberExtended;
 
 
-extern pros::ADIDigitalOut hangPiston;
-extern pros::ADIDigitalOut wingPistonLeft;
-extern pros::ADIDigitalOut wingPistonRight;
+extern pros::ADIDigitalOut grabberElasticPiston;
+extern pros::ADIDigitalOut ratchetPistonLeft;
+extern pros::ADIDigitalOut ratchetPistonRight;
 extern pros::ADIDigitalOut GrabberPiston1;
 extern pros:: ADIDigitalOut GrabberPiston2;
 

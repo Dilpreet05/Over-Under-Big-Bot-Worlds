@@ -31,12 +31,12 @@ void outtake();
 void stopIntake();
 void grabberDown();
 void grabberUp();
-void leftWingDown();
-void rightWingDown();
-void wingsDown();
-void leftWingUp();
-void rightWingUp();
-void wingsUp();
+// void leftWingDown();
+// void rightWingDown();
+// void wingsDown();
+// void leftWingUp();
+// void rightWingUp();
+// void wingsUp();
 
 
 void scoreAllianceTriball();
@@ -51,4 +51,5 @@ void startOfSkills();
 
 /* misc */
 void reset();
+void opcontrolCycle();
 

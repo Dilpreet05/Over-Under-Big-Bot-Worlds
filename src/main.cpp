@@ -21,7 +21,12 @@ void initialize() {
   // chassis.opcontrol_curve_buttons_left_set (pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT); // If using tank, only the left side is used. 
   // chassis.opcontrol_curve_buttons_right_set(pros::E_CONTROLLER_DIGITAL_Y,    pros::E_CONTROLLER_DIGITAL_A);
 
+  setIntakeBrakes();
+  setHangBrake();
+  setFlywheelBrake();
+
   // Autonomous Selector using LLEMU
+  grabberElasticPiston.set_value(1);
   ez::as::auton_selector.autons_add({
     Auton("Tune Forward/Backward: ", tuneForwardBackward),
     Auton("Tune Heading: ",tuneHeading),
@@ -93,7 +98,8 @@ void opcontrol() {
     updateDrive();
     spinFlywheel();
     spinIntake();
-    // updatePistons();
+    updateHang();
+    updatePistons();
 
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }

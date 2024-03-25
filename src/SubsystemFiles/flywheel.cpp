@@ -1,7 +1,7 @@
 #include "main.h"
 
-pros::Motor flywheel1(8,MOTOR_GEARSET_06,false);
-pros::Motor flywheel2(1,MOTOR_GEARSET_06,true);
+pros::Motor flywheel1(20,MOTOR_GEARSET_06,false);
+pros::Motor flywheel2(11,MOTOR_GEARSET_06,true);
 
 void setFlywheelBrake(){
         flywheel1.set_brake_mode(MOTOR_BRAKE_COAST);

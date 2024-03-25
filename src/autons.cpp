@@ -58,32 +58,44 @@ void matchCycleQuals(){
 }
 
 
+void opcontrolCycle(){
+  grabberDown();
+  pros::delay(250);
+  chassis.pid_drive_set(-10_in,DRIVE_SPEED);
+  chassis.pid_wait();
+  grabberUp();
+  pros::delay(250);
+  chassis.pid_drive_set(10_in,DRIVE_SPEED);
+  chassis.pid_wait();
+}
+
+
 // 
-void leftWingDown(){
-  wingPistonLeft.set_value(1);
-}
+// void leftWingDown(){
+//   wingPistonLeft.set_value(1);
+// }
 
-void rightWingDown(){
-  wingPistonRight.set_value(1);
-}
+// void rightWingDown(){
+//   wingPistonRight.set_value(1);
+// }
 
-void wingsDown(){
-  rightWingDown();
-  leftWingDown();
-}
+// void wingsDown(){
+//   rightWingDown();
+//   leftWingDown();
+// }
 
-void leftWingUp(){
-  wingPistonLeft.set_value(0);
-}
+// void leftWingUp(){
+//   wingPistonLeft.set_value(0);
+// }
 
-void rightWingUp(){
-  wingPistonRight.set_value(0);
-}
+// void rightWingUp(){
+//   wingPistonRight.set_value(0);
+// }
 
-void wingsUp(){
-  rightWingUp();
-  leftWingUp();
-}
+// void wingsUp(){
+//   rightWingUp();
+//   leftWingUp();
+// }
 
 void spinFW(){
   flywheel1 = 127;

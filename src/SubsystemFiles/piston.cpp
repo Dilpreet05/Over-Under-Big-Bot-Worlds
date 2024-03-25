@@ -1,43 +1,37 @@
 #include "main.h"
 
-bool isWingPistonLeft = false;
-pros::ADIDigitalOut wingPistonLeft('D');
+int isRatchetPistonExtended = 0;
+pros::ADIDigitalOut ratchetPistonLeft('D');
+pros::ADIDigitalOut ratchetPistonRight('E');
 
 
-bool isWingPistonRight = false;
-pros::ADIDigitalOut wingPistonRight('E');
+int isGrabberElasticExtended = 1;
+pros::ADIDigitalOut grabberElasticPiston('F');
 
 
-bool isHangExtended = false;
-pros::ADIDigitalOut hangPiston('C');
-
-
-bool isGrabberExtended = false;
-pros::ADIDigitalOut GrabberPiston1('A');
-pros:: ADIDigitalOut GrabberPiston2('B');
+int isGrabberExtended = 0;
+pros::ADIDigitalOut GrabberPiston1('H');
+pros:: ADIDigitalOut GrabberPiston2('G');
 
 
 void updatePistons(){
 
-        /* HANG CONTROLS */
-        if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)){
-                isHangExtended = !isHangExtended;
-                hangPiston.set_value(isHangExtended);
-        }
+        // /* HANG CONTROLS */
+        // if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)){
+        //         isGrabberElasticExtended = !isGrabberElasticExtended;
+        //         hangPiston.set_value(isGrabberElasticExtended);
+        // }
 
         
-        /* RIGHT WING CONTROLS */
+        /* RATCHET CONTROLS */
         if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)){
-                isWingPistonRight = !isWingPistonRight;
-                wingPistonRight.set_value(isWingPistonRight);
+                isRatchetPistonExtended = !isRatchetPistonExtended;
+                ratchetPistonLeft.set_value(isRatchetPistonExtended);
+                ratchetPistonRight.set_value(isRatchetPistonExtended);  
         }
 
 
-        /* LEFT WING CONTROLS */
-        if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT)){
-                isWingPistonLeft = !isWingPistonLeft;
-                wingPistonLeft.set_value(isWingPistonLeft);
-        }
+
 
 
         /* GRABBER CONTROLS */
