@@ -24,7 +24,7 @@ void initialize() {
   setIntakeBrakes();
   setHangBrake();
   setFlywheelBrake();
-
+  setOpticalLight(100);
   // Autonomous Selector using LLEMU
   grabberElasticPiston.set_value(1);
   ez::as::auton_selector.autons_add({
@@ -73,7 +73,6 @@ void opcontrol() {
   // This is preference to what you like to drive on
   chassis.drive_brake_set(MOTOR_BRAKE_BRAKE);
   chassis.pid_tuner_print_terminal_set(true);
-  
   while (true) {
     
     // PID Tuner
@@ -100,7 +99,6 @@ void opcontrol() {
     spinIntake();
     updateHang();
     updatePistons();
-
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }

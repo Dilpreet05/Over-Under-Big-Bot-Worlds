@@ -52,6 +52,7 @@
 #include "SubsystemHeaders/intake.hpp"
 #include "SubsystemHeaders/piston.hpp"
 #include "SubsystemHeaders/hang.hpp"
+#include "SubsystemHeaders/optical.hpp"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do
