@@ -1,44 +1,37 @@
 #include "main.h"
 
-int isRatchetPistonExtended = 0;
-pros::ADIDigitalOut ratchetPistonLeft('D');
-pros::ADIDigitalOut ratchetPistonRight('E');
+int isTrussExtended = 0;
+pros::ADIDigitalOut trussPistonLeft('D');
+pros::ADIDigitalOut trussPistonRight('E');
 
 
-int isGrabberElasticExtended = 1;
-pros::ADIDigitalOut grabberElasticPiston('F');
 
 
-int isGrabberExtended = 0;
-pros::ADIDigitalOut GrabberPiston1('H');
-pros:: ADIDigitalOut GrabberPiston2('G');
+int isHangExtended = 0;
+pros::ADIDigitalOut HangPistonLeft('H');
+pros:: ADIDigitalOut HangPistonRight('G');
 
 
 void updatePistons(){
 
-        // /* HANG CONTROLS */
-        // if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)){
-        //         isGrabberElasticExtended = !isGrabberElasticExtended;
-        //         hangPiston.set_value(isGrabberElasticExtended);
-        // }
 
         
-        /* RATCHET CONTROLS */
-        if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)){
-                isRatchetPistonExtended = !isRatchetPistonExtended;
-                ratchetPistonLeft.set_value(isRatchetPistonExtended);
-                ratchetPistonRight.set_value(isRatchetPistonExtended);  
+        /* WING/TRUSS CONTROLS */
+        if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)){
+                isTrussExtended = !isTrussExtended;
+                trussPistonLeft.set_value(isTrussExtended);
+                trussPistonRight.set_value(isTrussExtended);  
         }
 
 
 
 
 
-        /* GRABBER CONTROLS */
-        if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)){
-                isGrabberExtended = !isGrabberExtended;
-                GrabberPiston1.set_value(isGrabberExtended);
-                GrabberPiston2.set_value(isGrabberExtended);
+        /* HANG CONTROLS */
+        if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2) ){
+                isHangExtended = !isHangExtended;
+                HangPistonLeft.set_value(isHangExtended);
+                HangPistonRight.set_value(isHangExtended);
         }
 
         pros::delay(20);

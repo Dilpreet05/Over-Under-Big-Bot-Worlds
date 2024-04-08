@@ -59,14 +59,14 @@ void matchCycleQuals(){
 
 
 void opcontrolCycle(){
-  grabberDown();
-  pros::delay(250);
-  chassis.pid_drive_set(-10_in,DRIVE_SPEED);
-  chassis.pid_wait();
-  grabberUp();
-  pros::delay(250);
-  chassis.pid_drive_set(10_in,DRIVE_SPEED);
-  chassis.pid_wait();
+  // grabberDown();
+  // pros::delay(250);
+  // chassis.pid_drive_set(-10_in,DRIVE_SPEED);
+  // chassis.pid_wait();
+  // grabberUp();
+  // pros::delay(250);
+  // chassis.pid_drive_set(10_in,DRIVE_SPEED);
+  // chassis.pid_wait();
 }
 
 
@@ -97,17 +97,6 @@ void opcontrolCycle(){
 //   leftWingUp();
 // }
 
-void spinFW(){
-  flywheel1 = 127;
-  flywheel2 = 127;
-}
-
-void stopFW(){
-  flywheel1 = 0;
-  flywheel2 = 0;
-  flywheel1.brake();
-  flywheel2.brake();
-}
 
 void intakeSpin(){ // intake triballs for flywheel or controlling
   intakeMotor = 127;
@@ -119,16 +108,6 @@ void outtake(){ // outtake/pushout triballs
 
 void stopIntake(){ // stops intake
   intakeMotor = 0;
-}
-
-void grabberDown(){
-  GrabberPiston1.set_value(true);  // Deploy the piston
-  GrabberPiston2.set_value(true);
-}
-
-void grabberUp(){
-  GrabberPiston1.set_value(false);  // Deploy the piston
-  GrabberPiston2.set_value(false);
 }
 
 void reset(){ // 0s all sensors, including IMU and IMEs

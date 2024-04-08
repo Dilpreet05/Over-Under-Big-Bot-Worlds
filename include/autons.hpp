@@ -24,19 +24,12 @@ void skills();
 
 
 /* Methods that control subsystems */
-void spinFW();
-void stopFW();
+
 void intakeSpin();
 void outtake();
 void stopIntake();
-void grabberDown();
-void grabberUp();
-// void leftWingDown();
-// void rightWingDown();
-// void wingsDown();
-// void leftWingUp();
-// void rightWingUp();
-// void wingsUp();
+
+
 
 
 void scoreAllianceTriball();

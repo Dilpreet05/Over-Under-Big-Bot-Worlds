@@ -22,11 +22,9 @@ void initialize() {
   // chassis.opcontrol_curve_buttons_right_set(pros::E_CONTROLLER_DIGITAL_Y,    pros::E_CONTROLLER_DIGITAL_A);
 
   setIntakeBrakes();
-  setHangBrake();
-  setFlywheelBrake();
-  setOpticalLight(100);
+  // setOpticalLight(100);
+
   // Autonomous Selector using LLEMU
-  grabberElasticPiston.set_value(1);
   ez::as::auton_selector.autons_add({
     Auton("Tune Forward/Backward: ", tuneForwardBackward),
     Auton("Tune Heading: ",tuneHeading),
@@ -61,7 +59,6 @@ void autonomous() {
   chassis.drive_imu_reset(); // Reset gyro position to 0
   chassis.drive_sensor_reset(); // Reset drive sensors to 0
   chassis.drive_brake_set(MOTOR_BRAKE_HOLD); // Set motors to hold.  This helps autonomous consistency
-  setFlywheelBrake();
   setIntakeBrakes();
   ez::as::auton_selector.selected_auton_call(); // Calls selected auton from autonomous selector
 }
@@ -95,10 +92,9 @@ void opcontrol() {
 
 
     updateDrive();
-    spinFlywheel();
     spinIntake();
-    updateHang();
     updatePistons();
+
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
 }
