@@ -5,6 +5,7 @@ pros::ADIDigitalOut trussPistonLeft('E');
 
 int isWingExtended = 0;
 pros::ADIDigitalOut wingPistonRight('D');
+pros::ADIDigitalOut wingPistonLeft('F');
 
 
 int isHangExtended = 0;

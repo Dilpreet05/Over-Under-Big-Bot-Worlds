@@ -18,9 +18,9 @@ void tuneSwing();
 void default_constants();
 
 
-void matchCycleQuals();
-void matchCycleElims();
-void skills();
+void qualificationMatchAuto();
+void eliminationMatchAuto();
+
 
 
 /* Methods that control subsystems */

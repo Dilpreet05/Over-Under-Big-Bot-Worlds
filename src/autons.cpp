@@ -40,62 +40,14 @@ void default_constants() {
 // . . .
 
 
-/* This is the autonomous routine we use when we are in R16 or ELIMS */
-/* This routine has more consistant scoring of triballs at the cost of no win point */
-void matchCycleElims(){
+void qualificationMatchAuto();
 
 
 
-}
 
 
-/* This is the autonomous routine we call when we are playing in our qualification matches */
-/* This rutine gets us win point as well as scoring as many triballs as possible */
-void matchCycleQuals(){
+/* Helper methods */
 
-
-
-}
-
-
-void opcontrolCycle(){
-  // grabberDown();
-  // pros::delay(250);
-  // chassis.pid_drive_set(-10_in,DRIVE_SPEED);
-  // chassis.pid_wait();
-  // grabberUp();
-  // pros::delay(250);
-  // chassis.pid_drive_set(10_in,DRIVE_SPEED);
-  // chassis.pid_wait();
-}
-
-
-// 
-// void leftWingDown(){
-//   wingPistonLeft.set_value(1);
-// }
-
-// void rightWingDown(){
-//   wingPistonRight.set_value(1);
-// }
-
-// void wingsDown(){
-//   rightWingDown();
-//   leftWingDown();
-// }
-
-// void leftWingUp(){
-//   wingPistonLeft.set_value(0);
-// }
-
-// void rightWingUp(){
-//   wingPistonRight.set_value(0);
-// }
-
-// void wingsUp(){
-//   rightWingUp();
-//   leftWingUp();
-// }
 
 
 void intakeSpin(){ // intake triballs for flywheel or controlling
