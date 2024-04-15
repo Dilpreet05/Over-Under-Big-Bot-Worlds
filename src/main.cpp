@@ -27,7 +27,7 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
     Auton("QUALIFICATION AUTON: ", qualificationMatchAuto),
-    Auton("ELIMINATION AUTON: ", eliminationMatchAuto),
+    // Auton("ELIMINATION AUTON: ", eliminationMatchAuto),
     Auton("Tune Forward/Backward: ", tuneForwardBackward),
     Auton("Tune Heading: ",tuneHeading),
     Auton("Tune Turn: ", tuneTurn),
@@ -74,8 +74,8 @@ void opcontrol() {
   chassis.pid_tuner_print_terminal_set(true);
   while (true) {
     
-    // PID Tuner
-    // After you find values that you're happy with, you'll have to set them in auton.cpp
+    // // PID Tuner
+    // // After you find values that you're happy with, you'll have to set them in auton.cpp
     // if (!pros::competition::is_connected()) { 
     //   // Enable / Disable PID Tuner
     //   //  When enabled: 
@@ -91,9 +91,11 @@ void opcontrol() {
     //   chassis.pid_tuner_iterate(); // Allow PID Tuner to iterate
     // } 
 
+    chassis.opcontrol_arcade_standard(ez::SPLIT);
 
 
-    updateDrive();
+
+    // updateDrive();
     spinIntake();
     updatePistons();
 

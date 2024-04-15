@@ -19,20 +19,28 @@ void default_constants();
 
 
 void qualificationMatchAuto();
+    void disrupt();
+    void scoreAllianceTriball();
+    void matchLoad();
+    void slam();
+
 void eliminationMatchAuto();
 
 
 
+void swing(ez::e_swing,double, int speed = 90);
+void turn(double, int speed = 90);
+void drive(double,bool slew = false, int speed = 101);
 /* Methods that control subsystems */
 
-void intakeSpin();
+void intake();
 void outtake();
 void stopIntake();
+void rightWingOut();
+void rightWingIn();
+void leftWingOut();
+void leftWingIn();
 
-
-
-
-void scoreAllianceTriball();
 void matchCycleClose();
 void matchCycleFar();
 void touchHangBar();

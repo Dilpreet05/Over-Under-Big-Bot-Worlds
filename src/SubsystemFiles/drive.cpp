@@ -13,7 +13,7 @@ void updateDrive(){
                 chassis.opcontrol_drive_reverse_set(!chassis.opcontrol_drive_reverse_get());
         }
 
-        if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)){
+        if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)){
                 // macro
         }
 

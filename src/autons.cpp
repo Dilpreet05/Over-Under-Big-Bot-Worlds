@@ -13,14 +13,15 @@ const int SWING_SPEED = 90;
 ///
 // Constants
 ///
+
 void default_constants() {
  // PID Constants
-  chassis.pid_drive_constants_forward_set(10,0,39.5);
-  chassis.pid_drive_constants_backward_set(10,0,39.5);
+  chassis.pid_drive_constants_forward_set(12.5,0,38.5);
+  chassis.pid_drive_constants_backward_set(12.5,0,38.5);
   chassis.pid_heading_constants_set(4, 0, 22);
-  chassis.pid_turn_constants_set(2.2, 0, 0);
-  chassis.pid_swing_constants_forward_set(3.7,0,12.5);
-  chassis.pid_swing_constants_backward_set(3.7,0,14.5);
+  chassis.pid_turn_constants_set(2.1, 0, 9.75);
+  chassis.pid_swing_constants_forward_set(4.5,0,19.75);
+  chassis.pid_swing_constants_backward_set(4.5,0,22.75);
 
 
   
@@ -40,7 +41,152 @@ void default_constants() {
 // . . .
 
 
-void qualificationMatchAuto();
+/*
+  WINPOINT AUTO
+  1. grab the 2 center triballs and put them in the alley
+  2. score the alliance color triball
+  3. matchload triballs
+  4. push the loaded triballs to the other side and score
+
+*/
+void qualificationMatchAuto(){
+  // pros::delay(1250);
+  disrupt();
+  scoreAllianceTriball();
+  matchLoad();
+  slam();
+
+
+}
+
+void disrupt(){
+
+  // outtake preload
+  drive(24,true);
+  turn(60);
+  outtake();
+  pros::delay(500);
+  stopIntake();
+
+  // intake close center ball
+  turn(-60);
+  intake();
+  drive(26,true);
+
+  // outtake close center ball
+  drive(-26,true);
+  turn(60);
+  outtake();
+  pros::delay(750);
+  stopIntake();
+
+
+  // disrupt center balls
+  // leftWingOut();
+  // drive(6);
+  // turn(290);
+  // leftWingIn();
+
+}
+
+void scoreAllianceTriball(){
+
+  turn(-45);
+  drive(-18);
+
+  turn(-135);
+
+  leftWingOut();
+
+  turn(-65);
+  turn(-135);
+  leftWingIn();
+
+
+  pros::delay(500);
+  // turn(-135);
+
+  drive(8);
+  turn(-290);
+  drive(-12);
+  // swing(ez::RIGHT_SWING,-260,127);
+  turn(-270);
+  drive(4);
+  drive(-7,127);
+
+
+}
+
+void matchLoad(){
+
+  // line up to bar
+
+  drive(12);
+  turn(-320);
+  drive(12);
+  rightWingOut();
+  drive(10);
+
+  // cycle match loads
+
+  chassis.drive_angle_set(40);
+
+  for(int k = 0; k < 2; k++){
+    turn(-15,127);
+    turn(45);
+  }
+
+  turn(-15,127);
+  rightWingIn();
+  pros::delay(500);
+
+
+
+  
+
+}
+
+void slam(){
+
+  // outtake();
+  turn(45);
+  drive(6);
+
+  turn(22.5);
+  drive(8);
+
+  leftWingOut();
+  // rightWingOut();
+
+  // stopIntake();
+
+  turn(-180);
+  drive(-72,true,DRIVE_SPEED/2);
+  turn(-225,TURN_SPEED/2);
+  // rightWingOut();
+  drive(-24,true,DRIVE_SPEED/2);
+
+  // rightWingIn();
+  leftWingIn();
+
+  drive(22,true);
+  turn(-180);
+  drive(3,true);
+
+
+
+
+}
+
+/*
+  ELIMS auto
+
+*/
+
+void eliminationMatchAuto(){
+
+}
+
 
 
 
@@ -48,9 +194,43 @@ void qualificationMatchAuto();
 
 /* Helper methods */
 
+void drive(double target,bool slew, int speed){
 
+  chassis.pid_drive_set(target,speed,slew);
+  chassis.pid_wait();
 
-void intakeSpin(){ // intake triballs for flywheel or controlling
+}
+
+void turn(double target, int speed){
+
+  chassis.pid_turn_set(target,speed);
+  chassis.pid_wait();
+
+}
+
+void swing(ez::e_swing type, double target,int speed){
+
+  chassis.pid_swing_set(type,target,speed);
+  chassis.pid_wait();
+
+}
+void rightWingOut(){
+  wingPistonRight.set_value(1);
+}
+
+void rightWingIn(){
+  wingPistonRight.set_value(0);
+}
+
+void leftWingOut(){
+  wingPistonLeft.set_value(1);
+}
+
+void leftWingIn(){
+  wingPistonLeft.set_value(0);
+}
+
+void intake(){ // intake triballs for flywheel or controlling
   intakeMotor = 127;
 }
 

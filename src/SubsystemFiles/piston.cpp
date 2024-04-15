@@ -1,10 +1,10 @@
 #include "main.h"
 
-int isTrussExtended = 0;
-pros::ADIDigitalOut trussPistonLeft('E');
 
-int isWingExtended = 0;
+int isRightWingExtended = 0;
 pros::ADIDigitalOut wingPistonRight('D');
+
+int isLeftWingExtended = 0;
 pros::ADIDigitalOut wingPistonLeft('F');
 
 
@@ -16,16 +16,17 @@ pros:: ADIDigitalOut HangPistonRight('G');
 void updatePistons(){
 
 
-        
-        /* WING/TRUSS CONTROLS */
-        if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)){
-                isTrussExtended = !isTrussExtended;
-                trussPistonLeft.set_value(isTrussExtended);
+
+        if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_DOWN)){
+                isRightWingExtended=!isRightWingExtended;
+                wingPistonRight.set_value(isRightWingExtended);
         }
 
         if(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)){
-                isWingExtended=!isWingExtended;
-                wingPistonRight.set_value(isWingExtended);
+
+                isLeftWingExtended = !isLeftWingExtended;
+                wingPistonLeft.set_value(isLeftWingExtended);
+
         }
 
 
