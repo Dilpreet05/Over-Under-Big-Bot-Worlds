@@ -91,11 +91,11 @@ void opcontrol() {
     //   chassis.pid_tuner_iterate(); // Allow PID Tuner to iterate
     // } 
 
-    chassis.opcontrol_arcade_standard(ez::SPLIT);
+    // chassis.opcontrol_arcade_standard(ez::SPLIT);
 
 
 
-    // updateDrive();
+    updateDrive();
     spinIntake();
     updatePistons();
 

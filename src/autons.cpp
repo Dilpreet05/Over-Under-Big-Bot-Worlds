@@ -101,18 +101,19 @@ void scoreAllianceTriball(){
   turn(-65);
   turn(-135);
   leftWingIn();
+  drive(-4);
 
 
   pros::delay(500);
   // turn(-135);
 
-  drive(8);
+  drive(12);
   turn(-290);
-  drive(-12);
+  drive(-10);
   // swing(ez::RIGHT_SWING,-260,127);
   turn(-270);
-  drive(4);
-  drive(-7,127);
+  drive(5);
+  drive(-9,127);
 
 
 }
@@ -138,6 +139,7 @@ void matchLoad(){
 
   turn(-15,127);
   rightWingIn();
+  drive(-4);
   pros::delay(500);
 
 
@@ -148,30 +150,29 @@ void matchLoad(){
 
 void slam(){
 
-  // outtake();
   turn(45);
-  drive(6);
-
-  turn(22.5);
   drive(8);
 
-  leftWingOut();
-  // rightWingOut();
+  turn(22.5);
+  drive(6);
 
-  // stopIntake();
+  leftWingOut();
+
 
   turn(-180);
   drive(-72,true,DRIVE_SPEED/2);
   turn(-225,TURN_SPEED/2);
-  // rightWingOut();
+  rightWingOut();
   drive(-24,true,DRIVE_SPEED/2);
 
-  // rightWingIn();
+  rightWingIn();
   leftWingIn();
 
-  drive(22,true);
+  pros::delay(500);
+
+  drive(25,true);
   turn(-180);
-  drive(3,true);
+  drive(31,true);
 
 
 
