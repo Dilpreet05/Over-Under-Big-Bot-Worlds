@@ -26,8 +26,9 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-    Auton("QUALIFICATION AUTON: ", qualificationMatchAuto),
-    // Auton("ELIMINATION AUTON: ", eliminationMatchAuto),
+    Auton("SKILLS",skills),
+    // Auton("QUALIFICATION AUTON: ", qualificationMatchAuto),
+    Auton("ELIMINATION AUTON: ", eliminationMatchAuto),
     Auton("Tune Forward/Backward: ", tuneForwardBackward),
     Auton("Tune Heading: ",tuneHeading),
     Auton("Tune Turn: ", tuneTurn),

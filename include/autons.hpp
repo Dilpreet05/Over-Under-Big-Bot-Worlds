@@ -25,7 +25,15 @@ void qualificationMatchAuto();
     void slam();
 
 void eliminationMatchAuto();
+    void eliminationDisrupt();
+    void eliminationLineUp();
+    void eliminationMatchLoad();
+    void eliminationSlam();
 
+void skills();
+    void skillsLineUp();
+    void skillsMatchLoad();
+    void skillsSlam();
 
 
 void swing(ez::e_swing,double, int speed = 90);

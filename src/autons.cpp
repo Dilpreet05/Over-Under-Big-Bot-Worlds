@@ -185,10 +185,179 @@ void slam(){
 */
 
 void eliminationMatchAuto(){
+  eliminationDisrupt();
+  eliminationLineUp();
+  eliminationMatchLoad();
+  eliminationSlam();
+
+}
+
+void eliminationDisrupt(){
+
+  // outtake preload
+  drive(24,true);
+  // turn(60);
+  // outtake();
+  // pros::delay(500);
+  // stopIntake();
+
+  // intake close center ball
+  turn(-60);
+  intake();
+  drive(28,true);
+
+  // spinny
+  
+  leftWingOut();
+  chassis.pid_turn_relative_set(360,60);
+  chassis.pid_wait();
+  pros::delay(150);
+  leftWingIn();
+
+  // outtake close center ball
+  drive(-28,true);
+  turn(60);
+  outtake();
+  pros::delay(750);
+  stopIntake();
+
+
 
 }
 
 
+
+
+void eliminationLineUp(){
+
+  turn(-45);
+  drive(-16);
+
+  turn(45);
+  rightWingOut();
+  drive(3);
+
+}
+
+void eliminationMatchLoad(){
+
+  for(int k = 0; k < 10; k++){
+    if(k%3==0){
+      drive(5);
+    }
+
+    turn(-30,127);
+    turn(45);
+    rightWingOut();
+
+  }
+
+  turn(-45);
+  rightWingIn();
+
+}
+
+void eliminationSlam(){
+
+  drive(8);
+  turn(225);
+
+  drive(-20,true);
+  turn(180);
+
+  leftWingOut();
+  rightWingOut();
+
+  drive(-73,true);
+  turn(135);
+  drive(-30);
+
+  rightWingIn();
+  leftWingIn();
+
+  drive(15);
+  turn(225);
+  drive(-5,127);
+  turn(135,127);
+  drive(-20,127);
+  
+  turn(110,127);
+  
+  drive(10,127);
+  drive(-40,127);
+  // drive(20,127);
+
+
+  // turn(90);
+  // drive(-40,127);
+  // drive(20,127);
+  // turn(-30,127);
+ 
+
+
+}
+
+
+/* SKILL */
+
+void skills(){
+  skillsLineUp();
+  skillsMatchLoad();
+  skillsSlam();
+
+}
+
+void skillsLineUp(){
+  drive(24,true);
+
+  turn(-45);
+  drive(-16);
+
+  turn(45);
+  rightWingOut();
+  drive(3);
+
+}
+
+void skillsMatchLoad(){
+
+    for(int k = 0; k < 23; k++){
+    if(k%3==0){
+      drive(5);
+    }
+
+    turn(-30,127);
+    turn(45);
+    rightWingOut();
+
+  }
+
+  turn(-45);
+  rightWingIn();
+
+
+}
+
+void skillsSlam(){
+  drive(8);
+  turn(225);
+
+  drive(-17,true);
+  turn(180);
+
+  leftWingOut();
+  rightWingOut();
+
+  drive(-60,true);
+
+  rightWingIn();
+  leftWingIn();
+
+  drive(50);
+  
+  
+
+}
 
 
 
