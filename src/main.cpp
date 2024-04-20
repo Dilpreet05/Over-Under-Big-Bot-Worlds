@@ -26,7 +26,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
-    Auton("SKILLS",skills),
+    // Auton("SKILLS",skills),
     // Auton("QUALIFICATION AUTON: ", qualificationMatchAuto),
     Auton("ELIMINATION AUTON: ", eliminationMatchAuto),
     Auton("Tune Forward/Backward: ", tuneForwardBackward),
@@ -71,7 +71,7 @@ void autonomous() {
 
 void opcontrol() {
   // This is preference to what you like to drive on
-  chassis.drive_brake_set(MOTOR_BRAKE_BRAKE);
+  chassis.drive_brake_set(MOTOR_BRAKE_COAST);
   chassis.pid_tuner_print_terminal_set(true);
   while (true) {
     
