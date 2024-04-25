@@ -17,6 +17,7 @@ void tuneSwing();
 
 void default_constants();
 
+void basicWinPoint();
 
 void qualificationMatchAuto();
     void disrupt();

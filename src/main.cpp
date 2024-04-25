@@ -1,4 +1,5 @@
 #include "main.h"
+#include "autons.hpp"
 
 /////
 // For installation, upgrading, documentations and tutorials, check out our website!
@@ -13,22 +14,23 @@ void initialize() {
 
   // Configure your chassis controls
   chassis.opcontrol_curve_buttons_toggle(true); // Enables modifying the controller curve with buttons on the joysticks
-  chassis.opcontrol_drive_activebrake_set(0); // Sets the active brake kP. We recommend 0.1.
+  chassis.opcontrol_drive_activebrake_set(0.1); // Sets the active brake kP. We recommend 0.1.
   chassis.opcontrol_curve_default_set(0, 0); // Defaults for curve. If using tank, only the first parameter is used. (Comment this line out if you have an SD card!)  
   default_constants(); // Set the drive to your own constants from autons.cpp!
 
   // These are already defaulted to these buttons, but you can change the left/right curve buttons here!
   // chassis.opcontrol_curve_buttons_left_set (pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT); // If using tank, only the left side is used. 
   // chassis.opcontrol_curve_buttons_right_set(pros::E_CONTROLLER_DIGITAL_Y,    pros::E_CONTROLLER_DIGITAL_A);
-
+  
   setIntakeBrakes();
   // setOpticalLight(100);
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
+    // Auton("BASIC WIN POINT: ",basicWinPoint),
     // Auton("SKILLS",skills),
-    // Auton("QUALIFICATION AUTON: ", qualificationMatchAuto),
-    Auton("ELIMINATION AUTON: ", eliminationMatchAuto),
+    Auton("QUALIFICATION AUTON: ", qualificationMatchAuto),
+    // Auton("ELIMINATION AUTON: ", eliminationMatchAuto),
     Auton("Tune Forward/Backward: ", tuneForwardBackward),
     Auton("Tune Heading: ",tuneHeading),
     Auton("Tune Turn: ", tuneTurn),
@@ -92,11 +94,11 @@ void opcontrol() {
     //   chassis.pid_tuner_iterate(); // Allow PID Tuner to iterate
     // } 
 
-    // chassis.opcontrol_arcade_standard(ez::SPLIT);
+    chassis.opcontrol_arcade_standard(ez::SPLIT);
 
 
 
-    updateDrive();
+    // updateDrive();
     spinIntake();
     updatePistons();
 

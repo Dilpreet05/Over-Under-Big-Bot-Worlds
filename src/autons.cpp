@@ -1,3 +1,4 @@
+#include "autons.hpp"
 #include "main.h"
 
 /////
@@ -16,10 +17,10 @@ const int SWING_SPEED = 90;
 
 void default_constants() {
  // PID Constants
-  chassis.pid_drive_constants_forward_set(12.5,0,38.5);
+  chassis.pid_drive_constants_forward_set(12.5,0,36);
   chassis.pid_drive_constants_backward_set(12.5,0,38.5);
-  chassis.pid_heading_constants_set(4, 0, 22);
-  chassis.pid_turn_constants_set(2.1, 0, 9.75);
+  chassis.pid_heading_constants_set(4, 0, 32);
+  chassis.pid_turn_constants_set(2.5, 0, 11.75);
   chassis.pid_swing_constants_forward_set(4.5,0,19.75);
   chassis.pid_swing_constants_backward_set(4.5,0,22.75);
 
@@ -41,6 +42,16 @@ void default_constants() {
 // . . .
 
 
+void basicWinPoint(){
+  disrupt();
+  scoreAllianceTriball();
+  drive(10);
+  turn(35);
+  drive(31);
+  turn(0);
+  drive(32);
+}
+
 /*
   WINPOINT AUTO
   1. grab the 2 center triballs and put them in the alley
@@ -61,23 +72,19 @@ void qualificationMatchAuto(){
 
 void disrupt(){
 
-  // outtake preload
-  drive(24,true);
-  turn(60);
-  outtake();
-  pros::delay(500);
-  stopIntake();
+
 
   // intake close center ball
+  drive(24,true);
   turn(-60);
   intake();
-  drive(26,true);
+  drive(28,true);
 
   // outtake close center ball
-  drive(-26,true);
+  drive(-28,true);
   turn(60);
   outtake();
-  pros::delay(750);
+  pros::delay(1000);
   stopIntake();
 
 
@@ -101,19 +108,18 @@ void scoreAllianceTriball(){
   turn(-65);
   turn(-135);
   leftWingIn();
-  drive(-4);
 
 
-  pros::delay(500);
+  pros::delay(1000);
   // turn(-135);
 
-  drive(12);
+  drive(8);
   turn(-290);
   drive(-10);
   // swing(ez::RIGHT_SWING,-260,127);
   turn(-270);
   drive(5);
-  drive(-9,127);
+  drive(-10,127);
 
 
 }
@@ -123,24 +129,25 @@ void matchLoad(){
   // line up to bar
 
   drive(12);
-  turn(-320);
+  turn(-315);
   drive(12);
   rightWingOut();
-  drive(10);
+  drive(8);
 
   // cycle match loads
 
-  chassis.drive_angle_set(40);
+  chassis.drive_angle_set(45);
 
-  for(int k = 0; k < 2; k++){
-    turn(-15,127);
+  for(int k = 0; k < 9; k++){
+    turn(-35,127);
     turn(45);
   }
 
-  turn(-15,127);
+  turn(-35,127);
+  turn(45);
   rightWingIn();
-  drive(-4);
-  pros::delay(500);
+  // drive(-4);
+  pros::delay(1000);
 
 
 
@@ -150,29 +157,37 @@ void matchLoad(){
 
 void slam(){
 
-  turn(45);
-  drive(8);
+  turn(45+180);
+  drive(-10);
 
-  turn(22.5);
-  drive(6);
+  turn(22.5+180);
+  drive(-6);
 
   leftWingOut();
 
+  turn(180);
+  drive(-48);
 
-  turn(-180);
-  drive(-72,true,DRIVE_SPEED/2);
-  turn(-225,TURN_SPEED/2);
-  rightWingOut();
-  drive(-24,true,DRIVE_SPEED/2);
-
-  rightWingIn();
   leftWingIn();
 
-  pros::delay(500);
+  drive(18);
 
-  drive(25,true);
-  turn(-180);
-  drive(31,true);
+
+
+  // turn(-180);
+  // drive(-72,true,DRIVE_SPEED/2);
+  // turn(-225,TURN_SPEED/2);
+  // rightWingOut();
+  // drive(-24,true,DRIVE_SPEED/2);
+
+  // rightWingIn();
+  // leftWingIn();
+
+  // pros::delay(500);
+
+  // drive(25,true);
+  // turn(-180);
+  // drive(31,true);
 
 
 
@@ -195,7 +210,7 @@ void eliminationMatchAuto(){
 void eliminationDisrupt(){
 
   // outtake preload
-  drive(24,true);
+  drive(26,true);
   // turn(60);
   // outtake();
   // pros::delay(500);
@@ -215,11 +230,13 @@ void eliminationDisrupt(){
   leftWingIn();
 
   // outtake close center ball
-  drive(-28,true);
+  drive(-30,true);
   turn(60);
   outtake();
   pros::delay(750);
   stopIntake();
+
+  chassis.drive_angle_set(60);
 
 
 
@@ -231,11 +248,11 @@ void eliminationDisrupt(){
 void eliminationLineUp(){
 
   turn(-45);
-  drive(-16);
+  drive(-15);
 
   turn(45);
   rightWingOut();
-  drive(3);
+  drive(2);
 
 }
 
@@ -280,11 +297,12 @@ void eliminationSlam(){
   drive(-5,127);
   turn(135,127);
   drive(-20,127);
+  drive(20,127);
   
-  turn(110,127);
+  // turn(110,127);
   
-  drive(10,127);
-  drive(-40,127);
+  // drive(10,127);
+  // drive(-40,127);
   // drive(20,127);
 
 
